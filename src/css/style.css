@@ -8,29 +8,17 @@ body{
 	overflow-x: hidden;
 }
 
-.container{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	min-height: 100%;
-}
-
 header{
 	margin-bottom: 40px;
 	padding: 15px;
 	background-color: #4C4C68;
 }
 
-footer{
-	padding: 15px;
-	background-color: #4C4C68;
-}
-footer.foot{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
+.wrapper{
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
 }
 
 nav a{
@@ -46,11 +34,12 @@ nav a:hover{
 	color: rgb(144, 156, 168);
 }
 
-.wrapper{
-	width: 85%;
+.container{
 	display: flex;
-	justify-content: space-between;
-	margin: auto;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	min-height: 100%;
 }
 
 form{
@@ -60,4 +49,29 @@ form{
 
 input[type= text], textarea{
 	outline: 0;
+}
+
+.modal{
+	max-width: 500px;
+	margin: auto;
+	border-radius: 12px;
+	box-shadow: 2px 2px 2px 0px #4C4C68;
+	background-color: #656178;
+	padding: 20px;
+	color: white;
+}
+.modal label{
+	display: block;
+	border: 2px solid tan;
+}
+
+footer{
+	padding: 15px;
+	background-color: #4C4C68;
+}
+footer.foot{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
 }
