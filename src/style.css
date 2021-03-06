@@ -3,20 +3,29 @@
 body{
 	margin: 0;
 	padding: 0;
-	height: 100vh;
+	min-height: 100vh;
 	background: whitesmoke;
+	overflow-x: hidden;
 }
 
 .container{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	padding-bottom: 35px;
+	position: relative;
 }
 
-header{
+header, footer{
 	padding: 15px;
 	background-color: #4C4C68;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
 }
 
 .wrapper{
