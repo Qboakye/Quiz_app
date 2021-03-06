@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Quiz App</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<section class="question-area" style="display: none">
+		<form class="student-area">
+			<p class="question"> Who is Santa ?</p>
+			<div class="possible-ans">
+				<label ><input type="radio" name="a">Kwame suhskuh isS shgshg shghdsg sbdhbdsh</label>
+				<label><input type="radio" name="a">Adjoa</label>
+				<label><input type="radio" name="a">Fiction</label>
+				<label><input type="radio" name="a">Priest</label>	
+			</div>
+			
+			<button class="submit" type="Submit">Submit</button>
+			<p class="num">1</p>
+		</form>
+	</section>
+
+	<section class="teacher-area">
+		<h2>Kindly Enter Question</h2>
+		<form class="question-box">
+			<div class="question-field">
+				<label>Question:</label>
+				<textarea placeholder="Kindly Enter your question."></textarea>
+			</div>
+			<div class="answer-box">
+				<h3>Possible answers</h3>
+				<div class="answer-list">
+					<label for="a">a.<input type="text" name="a" autocomplete="off"></label>
+					
+					<label for="b">b.<input type="text" name="b" autocomplete="off"></label>
+					
+					<label for="c">c.<input type="text" name="c" autocomplete="off"></label>
+					
+					<label for="d">d.<input type="text" name="d" autocomplete="off"></label>
+					
+				</div>
+			</div>
+			<div>
+				<label for="answer" style="font-weight: 500; letter-spacing: .5px;">Correct answer letter</label>
+				<input type="text" class="ans" name="answer" autocomplete="off">
+			</div>
+			<div class="enter">
+				<button type="submit" class="enter">Submit</button>
+			</div>
+		</form>
+	</section>
+
+	<script type="text/javascript">
+		//document.body.form.addEventListener("submit", (e) => e.preventDefault())
+		let questionBox = document.querySelector(".question-box")
+		questionBox.addEventListener("submit", (e) => e.preventDefault())
+	</script>
+</body>
+</html>
