@@ -14,6 +14,31 @@ body{
 	height: 100vh;
 }
 
+header{
+	padding: 15px;
+	background-color: #4C4C68;
+}
+
+.wrapper{
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+}
+
+nav a{
+	display: inline-block;
+	color: aliceblue;
+	text-decoration: none;
+	font-size: 22px;
+	margin-right: 15px;
+	transition: .3s linear;
+}
+
+nav a:hover{
+	color: rgb(144, 156, 168);
+}
+
 .question-area{
 	box-shadow: 2px 2px 4px 1px black;
 	height: 400px;
