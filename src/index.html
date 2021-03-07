@@ -17,34 +17,40 @@
 			</nav>
 		</div>
 	</header>
-	<form class="modal signup">
-		<label>First Name: 
-			<input type="text" name="firstname"/>
-		</label>
-		<label>Second Name: 
-			<input type="text" name="secondname">
-		</label>
-		<label>Email: 
-			<input type="email" name="email">
-		</label>
-		<label>Password: 
-			<input type="password" name="password"/>
-		</label>
-		<div class="signup-btn">
-			<button>Sign Up</button>
-		</div>
-	</form>
-	<form class="modal login">
-		<label>Email: 
-			<input type="email" name="email" />
-		</label>
-		<label>Password: 
-			<input type="password" name="password" />
-		</label>
-		<div class="login-btn">
-			<button>Log In</button>
-		</div>
-	</form>
+	<div class="overlay">
+		<form class="modal signup">
+			<div class="close">&times;</div>
+			<label>First Name: 
+				<input type="text" name="firstname"/>
+			</label>
+			<label>Second Name: 
+				<input type="text" name="secondname">
+			</label>
+			<label>Email: 
+				<input type="email" name="email">
+			</label>
+			<label>Password: 
+				<input type="password" name="password"/>
+			</label>
+			<div class="signup-btn">
+				<button>Sign Up</button>
+			</div>
+		</form>
+	</div>
+	<div class="overlay">
+		<form class="modal login">
+			<div class="close">&times;</div>
+			<label>Email: 
+				<input type="email" name="email" />
+			</label>
+			<label>Password: 
+				<input type="password" name="password" />
+			</label>
+			<div class="login-btn">
+				<button>Log In</button>
+			</div>
+		</form>
+	</div>
 	<section>
 		Welcome to ABC Indigo Quiz Platform
 	</section>
