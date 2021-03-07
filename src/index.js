@@ -12,5 +12,5 @@ navSignupBtn.addEventListener("click", () => signup.classList.remove("visible"))
 navLoginBtn.addEventListener("click", () => login.classList.remove("visible"))
 signupCloseBtn.addEventListener("click", () => signup.classList.add("visible"))
 loginCloseBtn.addEventListener("click", () => login.classList.add("visible"))
-forms.forEach(form => form.addEventListener("submit",(e) =>e.preventDefault()))
+forms.forEach(form => form.addEventListener("submit",(e) => e.preventDefault()))
 /*Functions */
