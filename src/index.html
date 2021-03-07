@@ -64,6 +64,32 @@
 			<div class="foot">ABC Indigo &copy; 2021</div>
 		</div>
 	</footer>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyD5t7EjWiQ1-OVest_s4bPaSFdGVckZGgg",
+			authDomain: "quiz-app-b815d.firebaseapp.com",
+			projectId: "quiz-app-b815d",
+			appId: "1:300955846090:web:1054b18e9bc992f725fb33",
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+
+		//Auth and firestore references
+		const db = firebase.firestore()
+		const auth = firebase.auth()
+
+		db.settings({timestampsInSnapshot: true})
+	</script>
 	<script type="text/javascript" src="./scripts/index.js"></script>
+	<script type="text/javascript" src="./scripts/auth.js"></script>
 </body>
 </html>
