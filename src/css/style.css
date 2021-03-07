@@ -66,10 +66,9 @@ input[type= text], textarea{
 	justify-content: center;
 	z-index: 2;
 	background-color: rgba(0,0,0,0.5);
-	display: none;
 }
 .visible{
-	display: block;
+	display: none;
 }
 .modal{
 	max-width: 500px;
