@@ -6,7 +6,6 @@ let loginForm = document.querySelector("#login-form")
 signupForm.addEventListener("submit", () => {
     let email = signupForm["email"].value
     let password = signupForm["password"].value
-    console.log(email, password)
     auth.createUserWithEmailAndPassword(email, password).then(()=> {
         console.log("created")
         signupCloseBtn.addEventListener("click", () => signup.classList.add("visible"))
@@ -16,7 +15,6 @@ signupForm.addEventListener("submit", () => {
 loginForm.addEventListener("submit", () => {
     let email = loginForm["email"].value
     let password = loginForm["password"].value
-    console.log(email, password)
     auth.signInWithEmailAndPassword(email, password).then(()=> {
 
         let newString = window.location.toString()
