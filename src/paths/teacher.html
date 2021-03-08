@@ -10,10 +10,10 @@
 	<header>
 		<div class="wrapper">
 			<div class="logo">
-
+				<img src="https://cdn3.iconfinder.com/data/icons/education-science-vol-1-1/512/z4-academy_education_university_college-256.png" alt="logo">
 			</div>
 			<nav>
-				<a href="#">Log Out</a>
+				<a href="#" class="nav-logout-btn">Log Out</a>
 			</nav>
 		</div>
 	</header>
@@ -53,9 +53,30 @@
 			<div class="foot">ABC Indigo &copy; 2021</div>
 		</div>
 	</footer>
-	
-	<script type="text/javascript">
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyD5t7EjWiQ1-OVest_s4bPaSFdGVckZGgg",
+			authDomain: "quiz-app-b815d.firebaseapp.com",
+			projectId: "quiz-app-b815d",
+			appId: "1:300955846090:web:1054b18e9bc992f725fb33",
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+
+		//Auth and firestore references
+		const db = firebase.firestore()
+		const auth = firebase.auth()
+
+		db.settings({timestampsInSnapshot: true})
 	</script>
+	<script type="text/javascript" src="../scripts/logout.js"></script>
 </body>
 </html>
