@@ -18,8 +18,20 @@ let loginForm = document.querySelector("#login-form")
 signupForm.addEventListener("submit", () => {
     let email = signupForm["email"].value
     let password = signupForm["password"].value
-    auth.createUserWithEmailAndPassword(email, password).then(()=> {
-        signupCloseBtn.addEventListener("click", () => signup.classList.add("visible"))
+    let teacher = signupForm["teacher"].checked && signupForm["teacher"].value
+    let student = signupForm["student"].checked && signupForm["student"].value
+    let category = teacher || student
+
+    auth.createUserWithEmailAndPassword(email, password).then(cred=> {
+        db.collection(category).doc(cred.user.uid).set({
+            title: category
+        }).then(() => {
+            let newString = window.location.toString()
+            let location = newString.slice(0, newString.lastIndexOf("/"))
+            window.location.assign(`${location}/paths/${category}.html`)
+        })
+        signupForm.reset()
+        signup.classList.add("visible")
     })
 })
 
