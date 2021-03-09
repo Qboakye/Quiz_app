@@ -1,28 +1,52 @@
 let questionBox = document.querySelector(".question-box")
 
-let user = auth.currentUser;
-var name, email, photoUrl, uid, emailVerified;
-
-console.log(user)
-
-if (user != null) {
-  uid = user.uid;  
-}
-
-//console.log(user.uid)
-
-questionBox.addEventListener("submit", () => {
-    const{question, a, b, c, d, answer} = questionBox
-    db.collection("quizzes").add({
-        question: question.value,
-        a: a.value,
-        b: b.value,
-        c: c.value,
-        d: d.value,
-        answer: answer.value
-    })
-    console.log(question.value, a.value, b.value, c.value, d.value, answer.value)
+questionBox.addEventListener("submit", user => {
+    auth.onAuthStateChanged(user => {
+        if(user){
+            const{question, a, b, c, d, answer} = questionBox
+            db.collection("quizzes").add({
+                creator: user.email,
+                question: question.value,
+                a: a.value,
+                b: b.value,
+                c: c.value,
+                d: d.value,
+                answer: answer.value
+            }).then(() => {
+                questionBox.reset()
+                questionBox.innerHTML = "<h3>SUBMITTED 👍</h3>"
+                setTimeout(()=>{
+                    questionBox.innerHTML = `
+                        <div class="question-field">
+                            <label>Question:</label>
+                            <textarea placeholder="Kindly Enter your question." name="question"></textarea>
+                        </div>
+                        <div class="answer-box">
+                            <h3>Possible answers</h3>
+                            <div class="answer-list">
+                                <label for="a">a.<input type="text" name="a" autocomplete="off"></label>
+                                <label for="b">b.<input type="text" name="b" autocomplete="off"></label>
+                                <label for="c">c.<input type="text" name="c" autocomplete="off"></label>
+                                <label for="d">d.<input type="text" name="d" autocomplete="off"></label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="answer" style="font-weight: 500; letter-spacing: .5px;">Correct answer letter</label>
+                            <input type="text" class="ans" name="answer" autocomplete="off">
+                        </div>
+                        <div class="enter">
+                            <button type="submit" class="enter">Submit</button>
+                        </div>
+                    `
+                },1300)
+            })
+            .catch(err => console.log(err))
+        }
+    })  
 })
+
+
+
 
 
 
