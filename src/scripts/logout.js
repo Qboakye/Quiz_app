@@ -10,3 +10,15 @@ logoutBtn.addEventListener("click", ()=> {
         window.location.assign(location + "src/index.html")
     })
 })
+
+auth.onAuthStateChanged(user => {
+    let newString = window.location.toString()
+    let location = newString.slice(0, newString.lastIndexOf("src"))
+    if(user){
+
+    }else{
+        if(!(window.location.href === location + "src/index.html")){
+            window.location.href = location + "src/index.html"
+        }
+    }
+})
