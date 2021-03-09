@@ -22,17 +22,21 @@ signupForm.addEventListener("submit", () => {
     let student = signupForm["student"].checked && signupForm["student"].value
     let category = teacher || student
 
-    auth.createUserWithEmailAndPassword(email, password).then(cred=> {
-        db.collection(category).doc(cred.user.uid).set({
-            title: category
-        }).then(() => {
-            let newString = window.location.toString()
-            let location = newString.slice(0, newString.lastIndexOf("/"))
-            window.location.assign(`${location}/paths/${category}.html`)
+    if(category){
+        auth.createUserWithEmailAndPassword(email, password).then(cred=> {
+            db.collection(category).doc(cred.user.uid).set({
+                title: category
+            }).then(() => {
+                let newString = window.location.toString()
+                let location = newString.slice(0, newString.lastIndexOf("/"))
+                window.location.assign(`${location}/paths/${category}.html`)
+            })
+            signupForm.reset()
+            signup.classList.add("visible")
         })
-        signupForm.reset()
-        signup.classList.add("visible")
-    })
+    } else{
+        console.log("No profession checked")
+    }
 })
 
 loginForm.addEventListener("submit", () => {
