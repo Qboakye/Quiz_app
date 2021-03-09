@@ -32,14 +32,13 @@ let loginForm = document.querySelector("#login-form")
 
 /* EventListeners */
 signupForm.addEventListener("submit", () => {
-    let email = signupForm["email"].value
-    let password = signupForm["password"].value
+    const {email, password} = signupForm
     let teacher = signupForm["teacher"].checked && signupForm["teacher"].value
     let student = signupForm["student"].checked && signupForm["student"].value
     let category = teacher || student
 
     if(category){
-        auth.createUserWithEmailAndPassword(email, password).then(cred=> {
+        auth.createUserWithEmailAndPassword(email.value, password.value).then(cred=> {
             db.collection(category).doc(cred.user.uid).set({
                 title: category
             }).then(() => {
@@ -57,9 +56,8 @@ signupForm.addEventListener("submit", () => {
 })
 
 loginForm.addEventListener("submit", () => {
-    let email = loginForm["email"].value
-    let password = loginForm["password"].value
-    auth.signInWithEmailAndPassword(email, password).then(cred => {        
+    const {email, password} = loginForm
+    auth.signInWithEmailAndPassword(email.value, password.value).then(cred => {        
         checkDB("teacher", cred.user.uid)
         checkDB("student", cred.user.uid)
         login.classList.add("visible")
