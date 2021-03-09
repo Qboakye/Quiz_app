@@ -1,8 +1,24 @@
+/*Functions */
+function checkDB(info, id){
+    db.collection(info).doc(id).get().then(doc => {
+            if (doc.exists) {
+                if(!(window.location.href == `${location}/paths/${doc.data().title}.html`)){
+                    let newString = window.location.toString()
+                    let location = newString.slice(0, newString.lastIndexOf("/"))
+                    window.location.assign(`${location}/paths/${doc.data().title}.html`)
+                }
+            }  
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+}
+
 auth.onAuthStateChanged(user => {
     let newString = window.location.toString()
     let location = newString.slice(0, newString.lastIndexOf("src"))
     if(user){
-
+        checkDB("teacher", user.uid)
+        checkDB("student", user.uid)
     }else{
         if(!(window.location.href === location + "src/index.html")){
             window.location.href = location + "src/index.html"
@@ -43,38 +59,9 @@ signupForm.addEventListener("submit", () => {
 loginForm.addEventListener("submit", () => {
     let email = loginForm["email"].value
     let password = loginForm["password"].value
-    auth.signInWithEmailAndPassword(email, password).then(cred => {
-
-        console.log(cred.user.uid)
-        db.collection("teacher").doc(cred.user.uid).get().then(doc => {
-            if (doc.exists) {
-                let newString = window.location.toString()
-                let location = newString.slice(0, newString.lastIndexOf("/"))
-                window.location.assign(`${location}/paths/${doc.data().title}.html`)
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-
-        db.collection("student").doc(cred.user.uid).get().then(doc => {
-            if (doc.exists) {
-                let newString = window.location.toString()
-                let location = newString.slice(0, newString.lastIndexOf("/"))
-                window.location.assign(`${location}/paths/${doc.data().title}.html`)
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-        
-        let newString = window.location.toString()
-        let location = newString.slice(0, newString.lastIndexOf("/"))
-        //window.location.assign(location + "/paths/student.html")
+    auth.signInWithEmailAndPassword(email, password).then(cred => {        
+        checkDB("teacher", cred.user.uid)
+        checkDB("student", cred.user.uid)
         login.classList.add("visible")
-
     })
 })
-/*Functions */
