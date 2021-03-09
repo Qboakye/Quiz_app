@@ -19,7 +19,6 @@ signupForm.addEventListener("submit", () => {
     let email = signupForm["email"].value
     let password = signupForm["password"].value
     auth.createUserWithEmailAndPassword(email, password).then(()=> {
-        console.log("created")
         signupCloseBtn.addEventListener("click", () => signup.classList.add("visible"))
     })
 })
