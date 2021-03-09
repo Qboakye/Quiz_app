@@ -35,20 +35,46 @@ signupForm.addEventListener("submit", () => {
             signup.classList.add("visible")
         })
     } else{
-        console.log("No profession checked")
+        document.querySelector(".profession").innerText = "No profession checked"
+        setTimeout(() => document.querySelector(".profession").innerText = "",4000)
     }
 })
 
 loginForm.addEventListener("submit", () => {
     let email = loginForm["email"].value
     let password = loginForm["password"].value
-    auth.signInWithEmailAndPassword(email, password).then(()=> {
+    auth.signInWithEmailAndPassword(email, password).then(cred => {
 
+        console.log(cred.user.uid)
+        db.collection("teacher").doc(cred.user.uid).get().then(doc => {
+            if (doc.exists) {
+                let newString = window.location.toString()
+                let location = newString.slice(0, newString.lastIndexOf("/"))
+                window.location.assign(`${location}/paths/${doc.data().title}.html`)
+            } else {
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+
+        db.collection("student").doc(cred.user.uid).get().then(doc => {
+            if (doc.exists) {
+                let newString = window.location.toString()
+                let location = newString.slice(0, newString.lastIndexOf("/"))
+                window.location.assign(`${location}/paths/${doc.data().title}.html`)
+            } else {
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+        
         let newString = window.location.toString()
         let location = newString.slice(0, newString.lastIndexOf("/"))
-        window.location.assign(location + "/paths/student.html")
+        //window.location.assign(location + "/paths/student.html")
+        login.classList.add("visible")
 
-        loginCloseBtn.addEventListener("click", () => login.classList.add("visible"))
     })
 })
 /*Functions */
