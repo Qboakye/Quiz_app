@@ -33,34 +33,32 @@ studentArea.addEventListener("submit", () => {
     
     index++
     const{a, b, c, d} = studentArea
-    console.log(a.value, b.value, c.value, d.value)
+
    if(index == arr.length){
         studentArea.innerHTML = `
             <div class="centre-text">
                 <h3>You scored ${score}/${arr.length}</h3>
-                <button class="submit">Retry</button>
+                <button class="submit reload">Retry</button>
             </div>
         `
-   } else {
-        
-       console.log(a.value, b.value, c.value, d.value)
-
-    
-        console.log(1)
+        let reload = studentArea.querySelector(".reload")
+        reload.addEventListener("click", ()=> window.location.reload())
+    } else {
         auth.onAuthStateChanged(user => {
             if(user){ 
                 if(a.checked || b.checked || c.checked || d.checked){
-                    let answerA = a.checked && a.value
-                    let answerB = b.checked && b.value
-                    let answerC = c.checked && c.value
-                    let answerD = d.checked && d.value
+                    let answerA = a.checked && a.name
+                    let answerB = b.checked && b.name
+                    let answerC = c.checked && c.name
+                    let answerD = d.checked && d.name
         
                     let answered = answerA || answerB || answerC || answerD
-                    // console.log(answered)
-                    //console.log(data.answer)
+                    
                     questions()
-                    if(data.answer === answered){
-                        score + 1
+
+                    if(data.answer == answered){
+                        score = score + 1
+                        console.log(score)
                     }
                 }
             }
