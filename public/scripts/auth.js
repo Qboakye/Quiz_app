@@ -15,13 +15,13 @@ function checkDB(info, id){
 
 auth.onAuthStateChanged(user => {
     let newString = window.location.toString()
-    let location = newString.slice(0, newString.lastIndexOf("src"))
+    let location = newString.slice(0, newString.indexOf("public"))
     if(user){
         checkDB("teacher", user.uid)
         checkDB("student", user.uid)
     }else{
-        if(!(window.location.href === location + "src/index.html")){
-            window.location.href = location + "src/index.html"
+        if(!(window.location.href === location + "public/index.html")){
+            window.location.href = location + "public/index.html"
         }
     }
 })
