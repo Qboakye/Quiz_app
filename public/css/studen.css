@@ -27,19 +27,16 @@
 }
 
 .possible-ans{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
+	border: 2px solid ghostwhite;
 	font-size: 22px;
 	font-family: "Nova Flat", cursive;
-	padding: 0 0px 0 100px;
 }
 
 .possible-ans label{
-	width: 48%;
+	display: block;
+	border: 2px solid darkblue;
 	margin: 12px 10px 12px 0;
-	padding-right: 10px;
-	box-sizing: border-box;
+	padding-left: 20px;
 	text-align: left;
 }
 
@@ -49,7 +46,7 @@
 	border: 1px solid black;
 	font-size: 22px;
 	background: transparent;
-	margin-top: 36px; 
+	margin-top: 20px; 
 	cursor: pointer;
 	transition: all .3s linear;
 	text-transform: uppercase;
@@ -57,7 +54,7 @@
 
 .submit:hover{
 	color: white;
-	transform: translateY(-10px);
+	transform: translateY(-5px);
 }
 
 .num{
