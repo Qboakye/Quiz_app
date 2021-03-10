@@ -3,6 +3,7 @@ let arr = []
 let index = 0
 let data
 let score = 0
+let num = 0
 db.collection("quizzes").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         arr.push(doc.data())      
@@ -13,8 +14,9 @@ db.collection("quizzes").get().then(snapshot => {
 
 function questions(){
     data = arr[index]
+    num = index 
     studentArea.innerHTML = `
-        <p class="question"> ${data.question}</p>
+        <p class="question"> <span class="">${num + 1}.</span> ${data.question}</p>
         <div class="possible-ans">
             <label><input type="radio" name="a" value="${data.a}" id="a">${data.a}</label>
             <label><input type="radio" name="b" value="${data.b}" id="b">${data.b}</label>
@@ -23,36 +25,45 @@ function questions(){
         </div>
         
         <button class="submit" type="Submit">Submit</button>
-        <p class="num">${index + 1}</p>
+        <p class="num">${num + 1}</p>
     `
 }
 
 studentArea.addEventListener("submit", () => {
-   if(index == arr.length - 1){
+    
+    index++
+    const{a, b, c, d} = studentArea
+    console.log(a.value, b.value, c.value, d.value)
+   if(index == arr.length){
         studentArea.innerHTML = `
             <div class="centre-text">
                 <h3>You scored ${score}/${arr.length}</h3>
+                <button class="submit">Retry</button>
             </div>
         `
    } else {
-        const{a, b, c, d} = studentArea
-        if(a.checked || b.checked || c.checked || d.checked){
-            let answerA = a.checked && a.name
-            let answerB = b.checked && b.name
-            let answerC = c.checked && c.name
-            let answerD = d.checked && d.name
+        
+       console.log(a.value, b.value, c.value, d.value)
 
-            answered = answerA || answerB || answerC || answerD
-            if(data.answer === answered){
-                score + 1
-            }
-            
-            auth.onAuthStateChanged(user => {
-                index++
-                if(user){ 
+    
+        console.log(1)
+        auth.onAuthStateChanged(user => {
+            if(user){ 
+                if(a.checked || b.checked || c.checked || d.checked){
+                    let answerA = a.checked && a.value
+                    let answerB = b.checked && b.value
+                    let answerC = c.checked && c.value
+                    let answerD = d.checked && d.value
+        
+                    let answered = answerA || answerB || answerC || answerD
+                    // console.log(answered)
+                    //console.log(data.answer)
                     questions()
+                    if(data.answer === answered){
+                        score + 1
+                    }
                 }
-            })  
-       }
+            }
+        })
     } 
 })
