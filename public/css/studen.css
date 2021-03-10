@@ -8,6 +8,10 @@
 	background: linear-gradient(to right, #38ef7d, #11998e);
 }
 
+.student-area{
+	padding: 0 10px;
+}
+
 .centre-text{
 	display: flex;
 	align-items: center;
@@ -24,6 +28,7 @@
 	font-family: arial;
 	font-size: 30px;
 	margin-top: 55px; 
+	text-align: left;
 }
 
 .possible-ans{
@@ -34,8 +39,8 @@
 
 .possible-ans label{
 	display: block;
-	margin: 12px 10px 12px 0;
-	padding-left: 20px;
+	margin: 12px 0;
+	padding-left: 10px;
 	text-align: left;
 }
 
