@@ -30,38 +30,37 @@ function questions(){
 }
 
 studentArea.addEventListener("submit", () => {
-    
-    index++
-    const{a, b, c, d} = studentArea
-
-   if(index == arr.length){
-        studentArea.innerHTML = `
-            <div class="centre-text">
-                <h3>You scored ${score}/${arr.length}</h3>
-                <button class="submit reload">Retry</button>
-            </div>
-        `
-        let reload = studentArea.querySelector(".reload")
-        reload.addEventListener("click", ()=> window.location.reload())
-    } else {
+    if(a.checked || b.checked || c.checked || d.checked){
         auth.onAuthStateChanged(user => {
             if(user){ 
-                if(a.checked || b.checked || c.checked || d.checked){
-                    let answerA = a.checked && a.name
-                    let answerB = b.checked && b.name
-                    let answerC = c.checked && c.name
-                    let answerD = d.checked && d.name
-        
-                    let answered = answerA || answerB || answerC || answerD
-                    
-                    questions()
+                const{a, b, c, d} = studentArea
+                let answerA = a.checked && a.name
+                let answerB = b.checked && b.name
+                let answerC = c.checked && c.name
+                let answerD = d.checked && d.name
 
-                    if(data.answer == answered){
-                        score = score + 1
-                        console.log(score)
-                    }
+                let answered = answerA || answerB || answerC || answerD
+                
+                if(data.answer == answered){
+                    score = score + 1
+                    console.log(score)
                 }
+
+                index++
+                if(index < arr.length){
+                    questions()
+                } else {
+                    studentArea.innerHTML = `
+                        <div class="centre-text">
+                            <h3>You scored ${score}/${arr.length}</h3>
+                            <button class="submit reload">Retry</button>
+                        </div>
+                    `
+                    let reload = studentArea.querySelector(".reload")
+                    reload.addEventListener("click", ()=> window.location.reload())
+                } 
             }
         })
-    } 
+    }
+    
 })
