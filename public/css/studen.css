@@ -8,6 +8,16 @@
 	background: linear-gradient(to right, #38ef7d, #11998e);
 }
 
+.centre-text{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-weight: 800;
+	letter-spacing: 1px;
+	font-size: 30px;
+}
+
 .question{
 	font-family: "Nova Flat", cursive;
 	font-family: arial;

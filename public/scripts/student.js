@@ -29,7 +29,11 @@ function questions(){
 
 studentArea.addEventListener("submit", () => {
    if(index == arr.length - 1){
-        studentArea.innerHTML = `<h3>You scored ${score}/${arr.length}`
+        studentArea.innerHTML = `
+            <div class="centre-text">
+                <h3>You scored ${score}/${arr.length}</h3>
+            </div>
+        `
    } else {
         const{a, b, c, d} = studentArea
         if(a.checked || b.checked || c.checked || d.checked){
