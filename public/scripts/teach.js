@@ -2,7 +2,7 @@ let questionBox = document.querySelector(".question-box")
 
 questionBox.addEventListener("submit", () => {
     const {question, a, b, c, d, answer} = questionBox
-    if(a.value || b.value || c.value || d.value || question.value || answer.value){
+    if(a.value && b.value && c.value && d.value && question.value && answer.value){
         auth.onAuthStateChanged(user => {
             if(user){
                 db.collection("quizzes").add({
